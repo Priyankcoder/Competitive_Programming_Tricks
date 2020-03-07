@@ -1,0 +1,69 @@
+Important properties of XOR:
+
+There are 4 very important properties of XOR that we will be making use of. These are formal mathematical terms but actually the concepts are very simple.
+
+Commutative: A ⊕ B = B ⊕ A
+This is clear from the definition of XOR: it doesn’t matter which way round you order the two inputs.
+
+Associative: A ⊕ ( B ⊕ C ) = ( A ⊕ B ) ⊕ C
+This means that XOR operations can be chained together and the order doesn’t matter. If you aren’t convinced of the truth of this statement, try drawing the truth tables.
+
+Identity element: A ⊕ 0 = A
+This means that any value XOR’d with zero is left unchanged.
+
+Self-inverse: A ⊕ A = 0
+This means that any value XOR’d with itself gives zero.
+
+These properties hold not only when XOR is applied to a single bit, but also when it is applied bitwise to a vector of bits (e.g. a byte). For the rest of this article I will refer to such vectors as bytes, because it is a concept that all programmers are comfortable with, but don’t let that make you think that the properties only apply to a vector of size 8.
+
+Return the rightmost 1 in the binary representation of a number.
+Example: For 1010, you should perform some operations to give 0010 as the output. For 1100, you should give 0100. Similarly for 0001, you should return 0001.
+
+Try finding the solution yourself. The biggest hint you have is you can do it using ( ^ ) operator. After you’re done, scroll down.
+
+Solution:
+
+For this problem, you need to know a property of binary subtraction. Check if you can find out the property in the examples below,
+
+1000 – 0001 = 0111
+
+0100 – 0001 = 0011
+
+1100 – 0001 = 1011
+
+The property is, the difference between a binary number n and n-1 is all the bits on the right of the rightmost 1 are flipped including the rightmost 1. Using this amazing property, we can get our solution as
+
+x ^ (x & (x - 1))
+
+The only way you can totally understand how the above solution is working is by trying it out for different binary numbers on a piece of paper.
+
+( If you have a CS background and understood whatever i have said up till now, then congrats! You now already know 80% about a powerful data structure called Fenwick Tree or Binary Indexed Tree. You can look up on it to learn the 20% or let me know if you want my next article to be about it. )
+
+Interesting! isn’t it? Let’s see some more features.
+
+For a given array of repeated elements, exactly one element is not repeated. You need to return the non-repeated element.
+[1, 2, 5, 4, 6, 8, 9, 2, 1, 4, 5, 8, 9]
+You can refer the example above. You will need to return 6.
+
+There exists a solution of linear complexity.
+
+Solution:
+
+This one is kinda straightforward. You’ll need to know the following properties
+
+n ^ n = 0
+
+n ^ 0 = n
+
+Algorithm:
+
+Create a variable v with value 0.
+Iterate over array from i = 0 to i = n-1
+Perform v ^ arr[i] and store the result in v for every iteration.
+Return v.
+
+Note:
+ If a^b = c^d in question 
+ then a = b^c^d  (by xoring on both sides) 
+
+ 
