@@ -3,7 +3,7 @@ def mod_exp(base, power, mode):
         return 1
     if base == 0:
         return 0
-    temp = mod_exp(base, power//2)%mode
+    temp = mod_exp(base, power//2, mode)%mode
     if power & 1:
         return (temp*base*temp)%mode
     else:
