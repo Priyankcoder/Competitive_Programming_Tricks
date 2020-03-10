@@ -63,7 +63,19 @@ Perform v ^ arr[i] and store the result in v for every iteration.
 Return v.
 
 Note:
- If a^b = c^d in question 
- then a = b^c^d  (by xoring on both sides) 
+1. If a^b = c^d given in question 
+   then you can interperate a = b^c^d  (by xoring on both sides) 
 
- 
+2. Parity of a binary numbers can be calculated by using xor properties:
+     xor properties to be used:
+       (Odd parity number)^(odd parity number) = (Even parity number)
+       (Odd parity number)^(Even parity number) = (Odd parity number)
+       (Even parity number)^(Even parity number) = (Even parity number)
+    Eg.1.
+        a = 101 (Even parity), b = 100 (Odd parity)
+        then a^b = 001 (odd parity)
+    
+    Eg.2. 
+        if c = 101100 and you want to calculate the parity of c then divide it into two parts and calculate the 
+        parity of individual part and then parity of c will be xor of parity of both parts.
+        We can break a binary no. to singleton bit similarly.
