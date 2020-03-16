@@ -79,3 +79,29 @@ Note:
         if c = 101100 and you want to calculate the parity of c then divide it into two parts and calculate the 
         parity of individual part and then parity of c will be xor of parity of both parts.
         We can break a binary no. to singleton bit similarly.
+
+3. Two positive integers a and b have a sum of s and a bitwise XOR of x. How many possible values are there for the ordered pair (a, b)?
+solution:
+relation between xor and addition:
+
+                              a+b = a^b + (a and b)*2
+
+Now, (a And b) = ((a+b)-(a^b))/2  , which are given in the question
+      
+Now, Refer to xor and And table:
+       
+          a  b    a^b   a And b
+          0  0     0      0
+          0  1     1      0
+          1  0     1      0
+          1  1     0      1
+
+compare corresponding bits of a^b and a And b and there are four conditions arises shown in above table:
+1. If both bits are 1 then no. such pair exists
+2. If xor bit is 1 then two condition exists. So no. of total pairs becomes 2**n where n is no. of 1 in xor value.
+3. If xor and sum value are equal eg. 3 and 3 then there exists total (2**n - 2) pairs as two pairs would be (0, 3) and (3, 0) in which 0 is not positive.Hence, discarded.
+  
+           
+  
+
+
