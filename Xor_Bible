@@ -1,12 +1,14 @@
 Important properties of XOR:
 
-There are 4 very important properties of XOR that we will be making use of. These are formal mathematical terms but actually the concepts are very simple.
+There are 4 very important properties of XOR that we will be making use of. These are formal mathematical terms but actually the 
+concepts are very simple.
 
 Commutative: A ⊕ B = B ⊕ A
 This is clear from the definition of XOR: it doesn’t matter which way round you order the two inputs.
 
 Associative: A ⊕ ( B ⊕ C ) = ( A ⊕ B ) ⊕ C
-This means that XOR operations can be chained together and the order doesn’t matter. If you aren’t convinced of the truth of this statement, try drawing the truth tables.
+This means that XOR operations can be chained together and the order doesn’t matter. If you aren’t convinced of the truth of this 
+statement, try drawing the truth tables.
 
 Identity element: A ⊕ 0 = A
 This means that any value XOR’d with zero is left unchanged.
@@ -14,12 +16,16 @@ This means that any value XOR’d with zero is left unchanged.
 Self-inverse: A ⊕ A = 0
 This means that any value XOR’d with itself gives zero.
 
-These properties hold not only when XOR is applied to a single bit, but also when it is applied bitwise to a vector of bits (e.g. a byte). For the rest of this article I will refer to such vectors as bytes, because it is a concept that all programmers are comfortable with, but don’t let that make you think that the properties only apply to a vector of size 8.
+These properties hold not only when XOR is applied to a single bit, but also when it is applied bitwise to a vector of bits 
+(e.g. a byte). For the rest of this article I will refer to such vectors as bytes, because it is a concept that all programmers 
+are comfortable with, but don’t let that make you think that the properties only apply to a vector of size 8.
 
-Return the rightmost 1 in the binary representation of a number.
-Example: For 1010, you should perform some operations to give 0010 as the output. For 1100, you should give 0100. Similarly for 0001, you should return 0001.
+Ques - Return the rightmost 1 in the binary representation of a number.
+Example: For 1010, you should perform some operations to give 0010 as the output. For 1100, you should give 0100. Similarly for 
+0001, you should return 0001.
 
-Try finding the solution yourself. The biggest hint you have is you can do it using ( ^ ) operator. After you’re done, scroll down.
+Try finding the solution yourself. The biggest hint you have is you can do it using ( ^ ) operator. After you’re done, scroll 
+down.
 
 Solution:
 
@@ -31,17 +37,21 @@ For this problem, you need to know a property of binary subtraction. Check if yo
 
 1100 – 0001 = 1011
 
-The property is, the difference between a binary number n and n-1 is all the bits on the right of the rightmost 1 are flipped including the rightmost 1. Using this amazing property, we can get our solution as
+The property is, the difference between a binary number n and n-1 is all the bits on the right of the rightmost 1 are flipped 
+including the rightmost 1. Using this amazing property, we can get our solution as
 
 x ^ (x & (x - 1))
 
-The only way you can totally understand how the above solution is working is by trying it out for different binary numbers on a piece of paper.
+The only way you can totally understand how the above solution is working is by trying it out for different binary numbers on 
+a piece of paper.
 
-( If you have a CS background and understood whatever i have said up till now, then congrats! You now already know 80% about a powerful data structure called Fenwick Tree or Binary Indexed Tree. You can look up on it to learn the 20% or let me know if you want my next article to be about it. )
+( If you have a CS background and understood whatever i have said up till now, then congrats! You now already know 80% about a 
+powerful data structure called Fenwick Tree or Binary Indexed Tree. You can look up on it to learn the 20% or let me know if you 
+want my next article to be about it. )
 
 Interesting! isn’t it? Let’s see some more features.
 
-For a given array of repeated elements, exactly one element is not repeated. You need to return the non-repeated element.
+Ques - For a given array of repeated elements, exactly one element is not repeated. You need to return the non-repeated element.
 [1, 2, 5, 4, 6, 8, 9, 2, 1, 4, 5, 8, 9]
 You can refer the example above. You will need to return 6.
 
@@ -61,8 +71,9 @@ Create a variable v with value 0.
 Iterate over array from i = 0 to i = n-1
 Perform v ^ arr[i] and store the result in v for every iteration.
 Return v.
+            
 
-Note:
+Points to Remember:
 1. If a^b = c^d given in question 
    then you can interperate a = b^c^d  (by xoring on both sides) 
 
@@ -80,7 +91,8 @@ Note:
         parity of individual part and then parity of c will be xor of parity of both parts.
         We can break a binary no. to singleton bit similarly.
 
-3. Two positive integers a and b have a sum of s and a bitwise XOR of x. How many possible values are there for the ordered pair (a, b)?
+3. Two positive integers a and b have a sum of s and a bitwise XOR of x. How many possible values are there for the ordered pair 
+(a, b)?
 solution:
 relation between xor and addition:
 
@@ -97,9 +109,14 @@ Now, Refer to xor and And table:
           1  1     0      1
 
 compare corresponding bits of a^b and a And b and there are four conditions arises shown in above table:
-1. If both bits are 1 then no. such pair exists
-2. If xor bit is 1 then two condition exists. So no. of total pairs becomes 2**n where n is no. of 1 in xor value.
-3. If xor and sum value are equal eg. 3 and 3 then there exists total (2**n - 2) pairs as two pairs would be (0, 3) and (3, 0) in which 0 is not positive.Hence, discarded.
+a. If both bits are 1 then no. such pair exists
+b. If xor bit is 1 then two condition exists. So no. of total pairs becomes 2**n where n is no. of 1 in xor value.
+c. If xor and sum value are equal eg. 3 and 3 then there exists total (2**n - 2) pairs as two pairs would be (0, 3) and (3, 0) 
+in which 0 is not positive.Hence, discarded.
+
+4. Formula to calculate binary after last setbit of a binary number: x^(x & (x-1)) where x is the binary number.
+ex: Given : 10100
+    Ans : 100
   
            
   
